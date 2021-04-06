@@ -6,6 +6,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            string filepath = Console.ReadLine();
+            Console.WriteLine(filepath.Remove(filepath.IndexOf('.')));
             Solution fs = new Solution();
             fs.FindFile2();
             //fs.printFileList();

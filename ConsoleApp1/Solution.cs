@@ -115,13 +115,13 @@ namespace ConsoleApp1
                 
                 switch (NextFile.Extension){
                     case "FBX" :
-                        fbxlist.Add(NextFile.Name.Substring(NextFile.Name.Length-4,3), NextFile.FullName);
+                        fbxlist.Add(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                         break;
                     case "jpg" :
-                        jpglist.Add(NextFile.Name.Substring(NextFile.Name.Length - 4, 3), NextFile.FullName);
+                        jpglist.Add(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                         break;
                     default:
-                        fbxlist.Add(NextFile.Name.Substring(NextFile.Name.Length - 4, 3), NextFile.FullName);
+                        fbxlist.Add(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                         break;
                 }
             }
@@ -146,13 +146,13 @@ namespace ConsoleApp1
                     switch (NextFile.Extension)
                     {
                         case "FBX":
-                            fbxlist.TryAdd(NextFile.Name, NextFile.FullName);
+                            fbxlist.TryAdd(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                             break;
                         case "jpg":
-                            jpglist.TryAdd(NextFile.Name, NextFile.FullName);
+                            jpglist.TryAdd(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                             break;
                         default:
-                            fbxlist.TryAdd(NextFile.Name, NextFile.FullName);
+                            fbxlist.TryAdd(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                             break;
                     }
                 }
