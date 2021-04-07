@@ -114,10 +114,13 @@ namespace ConsoleApp1
             { //遍历文件
                 
                 switch (NextFile.Extension){
-                    case "FBX" :
+                    case ".FBX" :
                         fbxlist.Add(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                         break;
-                    case "jpg" :
+                    case ".jpg" :
+                        jpglist.Add(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
+                        break;
+                    case ".png":
                         jpglist.Add(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                         break;
                     default:
@@ -150,6 +153,9 @@ namespace ConsoleApp1
                             break;
                         case "jpg":
                             jpglist.TryAdd(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
+                            break;
+                        case ".png":
+                            jpglist.Add(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
                             break;
                         default:
                             fbxlist.TryAdd(NextFile.Name.Remove(NextFile.Name.IndexOf('.')), NextFile.FullName);
@@ -206,14 +212,14 @@ namespace ConsoleApp1
                 sw.WriteLine("export const modelsConf = [");
                 foreach (var item in fbxlist)
                 {
-                    sw.WriteLine($"    {{ name: '{item.Key}', path: `${{baseURL}}{item.Value}`, type: 'fbx', index: 1 }},");
+                    sw.WriteLine($"    {{ name: '{item.Key.Remove(item.Key.IndexOf('.'))}', path: `${{baseURL}}{item.Value}`, type: 'fbx', index: 1 }},");
                 }
                 sw.WriteLine("];");
                 sw.WriteLine();
                 sw.WriteLine("export const texturesConf = [");
                 foreach (var item in jpglist)
                 {
-                    sw.WriteLine($"    {{ name: '{item.Key}', path: `${{baseURL}}{item.Value}`, type: 'jpg'}},");
+                    sw.WriteLine($"    {{ name: '{item.Key.Remove(item.Key.IndexOf('.'))}', path: `${{baseURL}}{item.Value}`, type: 'jpg'}},");
                 }
                 sw.WriteLine("];");
                 sw.WriteLine("/**");
